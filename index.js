@@ -1,32 +1,23 @@
-function distanceFromHqInBlocks(num) {
-  if (num < 42) {
-    return 42 - num;
-  } else {
-    return num - 42;
-  }
+function distanceFromHqInBlocks(location) {
+  return Math.abs(42-location)
 }
 
-function distanceFromHqInFeet(num) {
-  return distanceFromHqInBlocks(num) * 264;
+function distanceFromHqInFeet(location) {
+  return distanceFromHqInBlocks(location) * 264
 }
 
-function distanceTravelledInFeet (origin, dest) {
-  if (origin < dest) {
-    return (dest - origin) * 264;
-  } else {
-    return (origin - dest) * 264;
-  }
+function distanceTravelledInFeet(one, two) {
+  return Math.abs(one-two)*264
 }
 
-function calculatesFarePrice (origin, dest) {
-  const distance = distanceTravelledInFeet(origin, dest);
-  if (distance <= 400) {
-    return 0;
-  } else if (distance > 400 && distance <= 2000) {
-    return .02 * distance;
-  } else if (distance > 2000 && distance < 2500) {
-    return 25;
-  } else {
-    return 'cannot travel that far';
+function calculatesFarePrice(one, two) {
+  if (distanceTravelledInFeet(one, two) <= 400) {
+    return 0
+  } else if (distanceTravelledInFeet(one, two) > 400 && distanceTravelledInFeet(one, two) <= 2000) {
+    return distanceTravelledInFeet(one, two) * 2 / 100
+  } else if (distanceTravelledInFeet(one, two) > 2000 && distanceTravelledInFeet(one, two) <= 2500) {
+    return 25
+  } else if (distanceTravelledInFeet(one, two) > 2500) {
+    return 'cannot travel that far'
   }
 }
